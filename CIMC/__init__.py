@@ -1,5 +1,8 @@
 from flask import Flask
 from .cache import cache
+
+
+
 # Introduce flask.
 app = Flask(__name__, instance_relative_config=True)
 # Inherit variables from the global config.
@@ -21,7 +24,9 @@ app.register_blueprint(home_blueprint, url_prefix='')
 from .admin import admin_blueprint
 app.register_blueprint(admin_blueprint, url_prefix='/admin')
 
-
+# Import Blog blueprint.
+from .blog import blog_blueprint
+app.register_blueprint(blog_blueprint, url_prefix='/blog')
 
 # Run the app.
 app.run()
