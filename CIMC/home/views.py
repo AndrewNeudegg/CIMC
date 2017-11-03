@@ -11,11 +11,11 @@ from . import home_blueprint
 def show(page):
     try:
         return render_template('home/%s' % page)
-    except TemplateNotFound:
+    except Exception:
         abort(404)
 
 
 @home_blueprint.errorhandler(404)
 @cache.cached(timeout=app.config.get('CACHE_TIMEOUT'))
 def page_not_found(e):
-    return render_template('home/404.html')
+    return render_template('home/404.html'), 404

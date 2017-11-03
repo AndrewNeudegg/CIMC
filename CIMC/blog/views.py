@@ -18,4 +18,4 @@ def show(page):
 @blog_blueprint.errorhandler(404)
 @cache.cached(timeout=app.config.get('CACHE_TIMEOUT'))
 def page_not_found(e):
-    return render_template('blog/404.html')
+    return render_template('blog/404.html'), 404

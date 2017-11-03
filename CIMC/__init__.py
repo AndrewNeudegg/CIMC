@@ -16,6 +16,9 @@ app.config.from_pyfile('config.py')
 # Register the cache.
 cache.init_app(app, config={'CACHE_TYPE': app.config.get('CACHE_TYPE')})
 
+# Init error handling for routes (404..etc)
+from .errors import *
+
 # Import home blueprint
 from .home import home_blueprint
 app.register_blueprint(home_blueprint, url_prefix='')
