@@ -1,7 +1,7 @@
 from flask import render_template, abort
 from jinja2 import TemplateNotFound
-from ..cache import cache
-from .. import app
+from ...cache import cache
+from ... import app
 from . import blog_blueprint
 
 
@@ -16,6 +16,6 @@ def show(page):
 
 
 @blog_blueprint.errorhandler(404)
-@cache.cached(timeout=app.config.get('CACHE_TIMEOUT'))
-def page_not_found(e):
+@cache.cached(timeout=app.config.get('CACHE_TIMEOUT'), key_prefix='blog_blueprint.errorhandler')
+def blog_page_not_found(e):
     return render_template('blog/404.html'), 404

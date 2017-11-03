@@ -13,22 +13,26 @@ app.config.from_pyfile('config.py')
 # Variables defined here will override those in the default configuration
 # app.config.from_envvar('APP_CONFIG_FILE')
 
+# Register the database.
+from .database import db
+
 # Register the cache.
 cache.init_app(app, config={'CACHE_TYPE': app.config.get('CACHE_TYPE')})
 
 # Init error handling for routes (404..etc)
-from .errors import *
+# This could be wildcarded, but that doesn't suit development.
+from .errors import page_not_found
 
 # Import home blueprint
-from .home import home_blueprint
+from .routes.home import home_blueprint
 app.register_blueprint(home_blueprint, url_prefix='')
 
 # Import Admin blueprint.
-from .admin import admin_blueprint
+from .routes.admin import admin_blueprint
 app.register_blueprint(admin_blueprint, url_prefix='/admin')
 
 # Import Blog blueprint.
-from .blog import blog_blueprint
+from .routes.blog import blog_blueprint
 app.register_blueprint(blog_blueprint, url_prefix='/blog')
 
 # Run the app.
