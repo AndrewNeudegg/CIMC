@@ -19,6 +19,10 @@ from .database import db
 # Register the cache.
 cache.init_app(app, config={'CACHE_TYPE': app.config.get('CACHE_TYPE')})
 
+# Load the authentication.
+from .authentication import login_manager
+login_manager.init_app(app)
+
 # Init error handling for routes (404..etc)
 # This could be wildcarded, but that doesn't suit development.
 from .errors import page_not_found
