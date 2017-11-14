@@ -4,6 +4,8 @@ from ...cache import cache
 from ... import app
 from . import admin_blueprint
 
+
+
 @admin_blueprint.route('/', defaults={'page': 'index'})
 @admin_blueprint.route('/<page>')
 @cache.cached(timeout=app.config.get('CACHE_TIMEOUT'))

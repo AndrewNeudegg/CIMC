@@ -1,3 +1,5 @@
+from datetime import datetime
+
 # Defines the authentication models.
 from ..database import db
 
@@ -10,13 +12,13 @@ class users_administration(db.Model):
     __tablename__ = "users_administration"
     id = db.Column('user_id', db.Integer , primary_key=True)
     username = db.Column('username', db.String(50), unique=True , index=True)
-    password = db.Column('password' , db.String(255))
-    registered_on = db.Column('registered_on' , db.DateTime)
+    #password = db.Column('password' , db.String(255))
+    #registered_on = db.Column('registered_on' , db.DateTime)
 
-    def __init__(self, username, password):
+    def __init__(self, username='user', password='pass'):
         self.username = username
-        self.password = password
-        self.registered_on = datetime.utcnow()
+        #self.password = password
+        #self.registered_on = datetime.utcnow()
 
     def is_authenticated(self):
         return True
@@ -32,3 +34,7 @@ class users_administration(db.Model):
  
     def __repr__(self):
         return '<User %r>' % (self.username)
+
+
+    def __unicode__(self):
+        return self.username

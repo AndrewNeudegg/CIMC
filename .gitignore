@@ -1,3 +1,6 @@
+# Pesky medling kids.
+*.db
+
 # Vs Code dev folder
 .vscode/
 

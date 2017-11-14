@@ -31,7 +31,7 @@ SESSION_COOKIE_NAME = ''
 
 ''' the domain for the session cookie. If this is not set,
     the cookie will be valid for all subdomains of SERVER_NAME. '''
-SESSION_COOKIE_DOMAIN = ''
+#SESSION_COOKIE_DOMAIN = ''
 
 ''' the path for the session cookie. If this is not set the cookie
     will be valid for all of APPLICATION_ROOT or if that is not set for '/'. '''
@@ -83,7 +83,7 @@ APPLICATION_ROOT = None
 
 ''' If set to a value in bytes, Flask will reject incoming requests
     with a content length greater than this by returning a 413 status code. '''
-MAX_CONTENT_LENGTH = 120
+#MAX_CONTENT_LENGTH = 1024
 
 ''' Default cache control max age to use with send_static_file()
     (the default static file handler) and send_file(), as datetime.timedelta
@@ -107,7 +107,7 @@ TRAP_HTTP_EXCEPTIONS = False
     nice for debugging to know why exactly it failed this
     flag can be used to debug those situations. If this config is set
     to True you will get a regular traceback instead. '''
-TRAP_BAD_REQUEST_ERRORS = False
+TRAP_BAD_REQUEST_ERRORS = True
 
 ''' The URL scheme that should be used for URL generation
     if no URL scheme is available. This defaults to http. '''
