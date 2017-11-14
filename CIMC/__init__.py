@@ -51,14 +51,6 @@ from .routes.blog import blog_blueprint
 app.register_blueprint(blog_blueprint, url_prefix='/blog')
 
 
-# ========= Flask Super Admin ========= #
-# Import admin 
-from .administration import admin
-from flask_admin.contrib.sqla import ModelView
-# Load Authentication table and register.
-from .authentication import users_administration
-admin.add_view(ModelView(users_administration, db.session))
-
 # ========= Before First Request ========= #
 db.create_all()
 
